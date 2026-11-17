@@ -1,0 +1,56 @@
+{
+  "name": "Referans Rehber Ara — harf dizinli, aranabilir marka rehberi",
+  "description": "AVM mağaza rehberi gibi: üstte arama kutusu ve canlı sonuç sayısı, altında baş harf dizini (çapa bağlantıları); referanslar alfabetik harf gruplarında, her grupta yapışkan dev harf ve 3 sütun kayıt satırı (rozet · ad · sektör · yıl). Yazdıkça kayıtlar süzülür, boş harfler söner. JS yokken arama gizli, dizin ve tüm liste çalışır. referans-tablo düz sıralı kayıt defteri, referans-sekme-sektor sektöre göre sekme paneli; bu modül alfabetik harf gruplarına böler, harf dizini çapalarıyla atlatır ve metin aramasıyla süzer — arama kutusu + A–Z dizini iskeleti ailede yok. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "search",
+  "category": "referans",
+  "subCategory": "searchable-directory",
+  "tags": [
+    "referans",
+    "directory",
+    "search",
+    "a-z",
+    "filter",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "sayi": "",
+    "sayiEtiket": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "araEtiket": "",
+    "sonucEtiket": "",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "ad": "marka / kurum adı (dil sözlüğü ya da düz metin; logo alt yazısı)",
+      "img": "logo görseli yolu (boşsa yazı logosu)",
+      "url": "iç/dış bağlantı (dış → yeni sekme)",
+      "sektor": "dil sözlüğü (sektör / iş alanı)",
+      "metin": "dil sözlüğü (kısa görüş / iş özeti)",
+      "kisi": "dil sözlüğü (görüş sahibi)",
+      "yil": "birlikte çalışma yılı (düz metin)"
+    }
+  }
+}

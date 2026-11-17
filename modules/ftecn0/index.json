@@ -1,0 +1,60 @@
+{
+  "name": "Reyon Haritası Arama — raf dokulu reyon planı, kelimeyle reyon bulma ve bilgi kutusu",
+  "description": "Mağaza planı: raf çizgili dikey reyon blokları (büyük reyon numarası, ikon, kategori), altında kasa şeridi ve giriş oku. Üstteki arama kutusuna «batarya», «vida» gibi bir kelime yazılınca kelimeyi taşıyan reyonlar vurgulanır, diğerleri soluklaşır ve ilk eşleşen reyonun bilgi kutusu (kategori + ürün kelimeleri) açılır; reyona tıklamak da kutuyu değiştirir. Kayıt alanları: `no` (reyon) · `metin` (virgüllü ürün kelimeleri). JS yokken plan ve tüm reyonların kelime listesi görünür. module ailesinde mağaza içi yön bulma yok; koleksiyon-satir-acilim ürün ızgarasıdır, fuar-salon-plani koordinatlı stand planı + rehber. Bu modül eşit reyon blokları üzerinde serbest metin aramasıyla reyon vurgular (eşleşen/soluk), raf dokusu ve kasa/giriş şeridiyle mağaza yerleşimini canlandırır. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Başlık ve metin yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "shelves",
+  "category": "module",
+  "subCategory": "aisle-finder",
+  "tags": [
+    "module",
+    "store-map",
+    "aisles",
+    "search",
+    "wayfinding",
+    "interactive",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "img": "",
+    "img2": "",
+    "cta_ad": "",
+    "cta_url": "",
+    "cta2_ad": "",
+    "cta2_url": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "aramaAd": "",
+    "reyonAd": "",
+    "kasaAd": "",
+    "girisAd": "",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data",
+    "alanlar": {
+      "ikon": "madde ikonu (Material Symbols)",
+      "baslik": "madde başlığı (dil sözlüğü, zorunlu)",
+      "metin": "madde metni (dil sözlüğü)",
+      "url": "madde bağlantısı"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "order": false,
+  "user": false,
+  "description": {
+    "tr": "Malta Yapı Market: Ankara Yenimahalle’de boya, hırdavat, el aletleri, elektrik, tesisat ve bahçe ürünleri; kelimeyle reyon bulun, boya bütçesini hesaplayın. Demo site; içerik kurgusaldır.",
+    "en": "Malta DIY Store: paint, hardware, hand tools, electrical, plumbing and garden goods in Yenimahalle, Ankara; find the aisle by keyword and estimate your paint budget. Demo site; content is fictional.",
+    "ar": "مالطا لمواد البناء: دهانات وعدد وأدوات يدوية وكهرباء وسباكة ومستلزمات حديقة في يني محلة بأنقرة؛ اعثر على الممر بكلمة واحسب ميزانية الدهان. موقع تجريبي؛ المحتوى افتراضي."
+  },
+  "keyword": {
+    "tr": "yapı market, hırdavat, boya, tesisat, el aletleri, Ankara",
+    "en": "DIY store, hardware, paint, plumbing, hand tools, Ankara",
+    "ar": "متجر مواد بناء، عدد، دهانات، سباكة، أدوات يدوية، أنقرة"
+  },
+  "category": "Kurumsal",
+  "name": "Malta Yapı Market",
+  "domain": "yapimarket-2.webyapar.com",
+  "langs": {
+    "tr": true,
+    "en": true,
+    "ar": true,
+    "de": false,
+    "ru": false,
+    "es": false,
+    "fr": false,
+    "it": false,
+    "ja": false,
+    "zh": false,
+    "ko": false,
+    "pt": false
+  },
+  "logo": "logo.png",
+  "multi": false,
+  "publishMode": "static",
+  "font": {
+    "body": "noto-sans",
+    "heading": "poppins",
+    "ar": {
+      "body": "ibm-plex-sans-arabic",
+      "heading": "noto-kufi-arabic"
+    }
+  },
+  "colorScheme": "auto",
+  "theme_color": "#1F5FAF",
+  "seo": {
+    "noindex": true
+  },
+  "cssTokens": {
+    "--mx-radius-sm": "7px",
+    "--mx-radius-md": "12px",
+    "--mx-radius-lg": "17px",
+    "--mx-radius-xl": "23px"
+  },
+  "icon": "icon.png"
+}

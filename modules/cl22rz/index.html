@@ -1,0 +1,127 @@
+<section class="modulex-cagri-hesap-mini{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-cagri-hesap-mini-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* cagri-hesap-mini — Ailede sayı hesaplayan çağrı yok (cagri-kontenjan sabit doluluğu gösterir); bu modül ziyaretçi girdisinden canlı fiyat aralığı üretir — kaydırıcı/sayı eşlemesi ve Intl para biçimi; teklif isteğini hazır bilgiyle başlatır. */
+  .modulex-cagri-hesap-mini { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --yaziRenk--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-cagri-hesap-mini *, .modulex-cagri-hesap-mini *::before, .modulex-cagri-hesap-mini *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-cagri-hesap-mini :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-cagri-hesap-mini :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-cagri-hesap-mini :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-cagri-hesap-mini :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-cagri-hesap-mini img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-cagri-hesap-mini) img { height: auto; }
+  .modulex-cagri-hesap-mini [hidden] { display: none !important; }
+  .modulex-cagri-hesap-mini :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-cagri-hesap-mini :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-cagri-hesap-mini-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-cagri-hesap-mini-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-cagri-hesap-mini--bassiz .modulex-cagri-hesap-mini-bas { display: none; }
+  .modulex-cagri-hesap-mini-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-cagri-hesap-mini-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-cagri-hesap-mini-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-cagri-hesap-mini-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-cagri-hesap-mini-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-cagri-hesap-mini-dugme:hover { transform: translateY(-2px); }
+  .modulex-cagri-hesap-mini-dugme--ikincil { background: transparent; color: --yaziRenk--; border-color: --cizgi--; }
+  .modulex-cagri-hesap-mini-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-cagri-hesap-mini-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-cagri-hesap-mini-duzen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+  .modulex-cagri-hesap-mini-duzen--tek { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
+  .modulex-cagri-hesap-mini-yazi { display: grid; gap: 14px; justify-items: start; }
+  .modulex-cagri-hesap-mini-hesap { display: grid; gap: 18px; padding: clamp(22px, 4vw, 40px); border: 1px solid --cizgi--; border-radius: --yuvarlak--; background: --kartBg--; box-shadow: 0 30px 60px -44px color-mix(in srgb, --yaziRenk-- 60%, transparent); }
+  .modulex-cagri-hesap-mini-alan-ad { font-weight: 750; }
+  .modulex-cagri-hesap-mini-girdi { display: grid; grid-template-columns: minmax(0, 1fr) 96px; align-items: center; gap: 16px; }
+  .modulex-cagri-hesap-mini-aralik { width: 100%; margin: 0; accent-color: --accent--; cursor: pointer; }
+  .modulex-cagri-hesap-mini-sayi { width: 100%; min-height: 48px; padding: 8px 10px; border: 2px solid --cizgi--; border-radius: 12px; background: --bg--; color: --yaziRenk--; font: inherit; font-weight: 750; font-variant-numeric: tabular-nums; text-align: center; transition: border-color 0.2s ease; }
+  .modulex-cagri-hesap-mini-sayi:hover { border-color: --accent--; }
+  .modulex-cagri-hesap-mini-sayi:focus-visible, .modulex-cagri-hesap-mini-aralik:focus-visible { outline: 3px solid --accent--; outline-offset: 2px; }
+  .modulex-cagri-hesap-mini-sonuc { display: grid; gap: 4px; padding: 18px 20px; border-radius: 14px; background: --vurguBg--; color: --vurguText--; }
+  .modulex-cagri-hesap-mini-sad { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .modulex-cagri-hesap-mini-cikti { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.45rem, 3.2vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .modulex-cagri-hesap-mini-eylem { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .modulex-cagri-hesap-mini-wa { display: inline-flex; align-items: center; gap: 8px; color: --yaziRenk--; font-weight: 700; text-decoration: none; transition: color 0.25s ease; }
+  .modulex-cagri-hesap-mini-wa:hover { color: --accentInk--; }
+  @media (max-width: 768px) {
+    .modulex-cagri-hesap-mini-duzen { grid-template-columns: minmax(0, 1fr); }
+    .modulex-cagri-hesap-mini-girdi { grid-template-columns: minmax(0, 1fr) 80px; gap: 12px; }
+  }
+  .modulex-cagri-hesap-mini-wasvg { width: 1.25em; height: 1.25em; flex: none; }
+  .modulex-cagri-hesap-mini-maddeler { display: grid; gap: 12px; }
+  .modulex-cagri-hesap-mini-madde { display: flex; align-items: flex-start; gap: 12px; }
+  .modulex-cagri-hesap-mini-mikon { flex: none; color: --accentInk--; font-size: 24px; }
+  .modulex-cagri-hesap-mini-myazi { display: grid; gap: 2px; }
+  .modulex-cagri-hesap-mini-myazi strong { font-weight: 700; }
+  .modulex-cagri-hesap-mini-myazi small { color: --muted--; font-size: 0.92rem; }
+  .modulex-cagri-hesap-mini-not { color: --muted--; font-size: 0.9rem; }
+  .modulex-cagri-hesap-mini-saat { display: flex; align-items: center; gap: 8px; color: --muted--; font-size: 0.95rem; }
+  .modulex-cagri-hesap-mini-saat .material-symbols-outlined { font-size: 20px; color: --accentInk--; }
+  .modulex-cagri-hesap-mini-metin { max-width: 62ch; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-hesap-mini :is(.modulex-cagri-hesap-mini-baslik, .modulex-cagri-hesap-mini-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-cagri-hesap-mini-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-cagri-hesap-mini { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-cagri-hesap-mini *, .modulex-cagri-hesap-mini *::before, .modulex-cagri-hesap-mini *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-cagri-hesap-mini";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const hesapMini = (s) => {
+        const f = s.querySelector("[data-hm]");
+        if (!f) return;
+        const r = f.querySelector("[data-hm-aralik]");
+        const n = f.querySelector("[data-hm-sayi]");
+        const o = f.querySelector("[data-hm-cikti]");
+        const mn = Number(f.dataset.hmMin) || 0;
+        const mx = Math.max(mn, Number(f.dataset.hmMax) || 0);
+        let pf = null;
+        try { pf = new Intl.NumberFormat(document.documentElement.lang || undefined, f.dataset.hmPara ? { style: "currency", currency: f.dataset.hmPara, maximumFractionDigits: 0 } : { maximumFractionDigits: 0 }); } catch (x) { pf = null; }
+        const bic = (v) => (pf ? pf.format(v) : String(Math.round(v)));
+        const etk = (q) => { const e = f.querySelector(q); return e ? e.textContent.trim() : ""; };
+        const baglar = [...s.querySelectorAll("[data-hm-bag]")];
+        baglar.forEach((a) => { a.dataset.hmTaban = a.getAttribute("href") || ""; });
+        const yaz = (ham) => {
+          const alt = Number((n || r).min) || 0;
+          const ust = Number((n || r).max) || alt;
+          const m = Math.max(alt, Math.min(ust, Number(ham) || alt));
+          if (r) r.value = String(m);
+          if (n && document.activeElement !== n) n.value = String(m);
+          const metin = mx > mn ? `${bic(m * mn)} – ${bic(m * mx)}` : bic(m * mn);
+          if (o) o.textContent = metin;
+          baglar.forEach((a) => {
+            const t = a.dataset.hmTaban;
+            if (!t) return;
+            let u;
+            try { u = new URL(t, location.href); } catch (x) { return; }
+            if (/(^|\.)(wa\.me|whatsapp\.com)$/i.test(u.hostname)) {
+              const satir = [a.dataset.hmOnek || "", `${etk("[data-hm-ad]")}: ${m}`, `${etk("[data-hm-sad]")}: ${metin}`].filter((x) => x && !/^:\s/.test(x));
+              u.searchParams.set("text", satir.join("\n"));
+            } else { u.searchParams.set("alan", String(m)); u.searchParams.set("tahmin", metin); }
+            a.setAttribute("href", u.href.replace(/\?[^#]*/, (q) => q.replace(/\+/g, "%20")));
+          });
+        };
+        if (r) r.addEventListener("input", () => yaz(r.value));
+        if (n) n.addEventListener("input", () => { if (n.value !== "") yaz(n.value); });
+        if (n) n.addEventListener("change", () => { n.blur(); yaz(n.value); });
+        yaz((n && n.value) || (r && r.value));
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      hesapMini(s, P, az);
+    });
+  })();
+</script>

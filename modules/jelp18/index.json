@@ -1,0 +1,54 @@
+{
+  "name": "Sayaç Yıldız Dağılımı — genel puan + yıldız histogramı + süzülen satırlar",
+  "description": "Solda yapışkan özet kartı: tüm satırların oranından hesaplanan genel puan (ör. «4,6 / 5»), kısmi dolu 5 yıldız ve 5★…1★ dağılım histogramı; sağda her rakam bir satır — oranı kadar dolan yıldız şeridi, etiket, not, rakam. Histogram çubuğuna dokununca satırlar o yıldız düzeyine süzülür. desing `toplam_ad` genel puanın altındaki yazı. sayac-puan-kirilim tek rozet + çentikli ölçek imleci, sayac-cubuk dolgu çubuğudur; bu modül değerleri 5 yıldız düzeyine bölüp dağılım histogramı + hesaplanmış genel ortalama kurar ve histogramla satır süzer (yorum/değerlendirme paneli iskeleti). Sayılar sayfa diliyle biçimlenir (Intl), metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "star_half",
+  "category": "stats",
+  "subCategory": "star-distribution",
+  "tags": [
+    "stats",
+    "rating",
+    "stars",
+    "histogram",
+    "filter",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "toplam_ad": "",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "sayi": "sayı (zorunlu; 1200 · \"4.9\")",
+      "onek": "önek (dil sözlüğü; ör. «%»)",
+      "sonek": "sonek (dil sözlüğü; ör. «+», «/5»)",
+      "etiket": "etiket (dil sözlüğü, zorunlu)",
+      "metin": "kısa not (dil sözlüğü)",
+      "ikon": "Material Symbols adı",
+      "ondalik": "ondalık basamak (yoksa sayıdan)",
+      "max": "oran tavanı (halka/çubuk/dolgu; yoksa % → 100, değilse listedeki en büyük)"
+    }
+  }
+}

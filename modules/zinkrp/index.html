@@ -1,0 +1,128 @@
+<section class="modulex-referans-rehber-ara{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-referans-rehber-ara-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* referans-rehber-ara — referans-tablo düz sıralı kayıt defteri, referans-sekme-sektor sektöre göre sekme paneli; bu modül alfabetik harf gruplarına böler, harf dizini çapalarıyla atlatır ve metin aramasıyla süzer — arama kutusu + A–Z dizini iskeleti ailede yok. */
+  .modulex-referans-rehber-ara { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-referans-rehber-ara *, .modulex-referans-rehber-ara *::before, .modulex-referans-rehber-ara *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-referans-rehber-ara :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-referans-rehber-ara :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-referans-rehber-ara :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-referans-rehber-ara :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-referans-rehber-ara img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-referans-rehber-ara) img { height: auto; }
+  .modulex-referans-rehber-ara [hidden] { display: none !important; }
+  .modulex-referans-rehber-ara :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-referans-rehber-ara :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-referans-rehber-ara-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-referans-rehber-ara-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-referans-rehber-ara--bassiz .modulex-referans-rehber-ara-bas { display: none; }
+  .modulex-referans-rehber-ara-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-referans-rehber-ara-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-referans-rehber-ara-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-referans-rehber-ara-bas { max-width: 760px; }
+  .modulex-referans-rehber-ara-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-referans-rehber-ara-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-referans-rehber-ara-dugme:hover { transform: translateY(-2px); }
+  .modulex-referans-rehber-ara-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-referans-rehber-ara-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-referans-rehber-ara-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-referans-rehber-ara-arac { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-block-end: 16px; }
+  .modulex-referans-rehber-ara:not(.modulex-referans-rehber-ara--rjs) .modulex-referans-rehber-ara-arac { display: none; }
+  .modulex-referans-rehber-ara-kutu { display: flex; flex: 1 1 320px; align-items: center; gap: 10px; max-width: 520px; min-height: 54px; padding-inline: 16px 8px; border: 2px solid --cizgi--; border-radius: 14px; background: --kartBg--; transition: border-color 0.25s ease, box-shadow 0.25s ease; }
+  .modulex-referans-rehber-ara-kutu:focus-within { border-color: --accent--; box-shadow: 0 0 0 4px color-mix(in srgb, --accent-- 18%, transparent); }
+  .modulex-referans-rehber-ara-kutu .material-symbols-outlined { color: --muted--; font-size: 22px; }
+  .modulex-referans-rehber-ara-girdi { flex: 1; min-width: 0; height: 48px; border: 0; background: transparent; color: --text--; font: inherit; font-size: 1rem; outline: none; }
+  .modulex-referans-rehber-ara-girdi::placeholder { color: --muted--; }
+  .modulex-referans-rehber-ara-say { color: --muted--; font-size: 0.9rem; font-weight: 650; }
+  .modulex-referans-rehber-ara-dizin { display: flex; flex-wrap: wrap; gap: 4px; padding-block: 10px; border-block: 1px solid --cizgi--; }
+  .modulex-referans-rehber-ara-hrf { display: inline-grid; place-items: center; min-width: 40px; height: 40px; padding-inline: 6px; border-radius: 8px; color: --text--; font-weight: 800; text-decoration: none; transition: background 0.2s ease, color 0.2s ease; }
+  .modulex-referans-rehber-ara-hrf:hover { background: --accent--; color: --accentText--; }
+  .modulex-referans-rehber-ara-hrf--sonuk { color: --muted--; text-decoration: line-through; pointer-events: none; }
+  .modulex-referans-rehber-ara-grup { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; padding-block: 22px; border-block-end: 1px solid --cizgi--; scroll-margin-block-start: 96px; }
+  .modulex-referans-rehber-ara-gharf { position: sticky; inset-block-start: 96px; align-self: start; color: --accentInk--; font-family: var(--mx-font-heading, inherit); font-size: clamp(2.6rem, 5vw, 3.6rem); font-weight: 850; line-height: 0.95; }
+  .modulex-referans-rehber-ara-kayitlar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 18px; }
+  .modulex-referans-rehber-ara-kayit > *, .modulex-referans-rehber-ara-kayit > .modulex-referans-rehber-ara-bag { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto auto; align-items: center; gap: 12px; padding: 10px; border-radius: 12px; transition: background 0.25s ease; }
+  .modulex-referans-rehber-ara-kayit:hover > * { background: --kartBg--; }
+  .modulex-referans-rehber-ara-harf { display: grid; place-items: center; width: 40px; height: 40px; overflow: hidden; border: 1px solid --cizgi--; border-radius: 10px; color: --accentInk--; font-size: 0.82rem; font-weight: 800; }
+  .modulex-referans-rehber-ara-kyazi { display: grid; min-width: 0; }
+  .modulex-referans-rehber-ara-kad { font-weight: 700; line-height: 1.3; }
+  .modulex-referans-rehber-ara-ksek { color: --muted--; font-size: 0.82rem; line-height: 1.4; }
+  .modulex-referans-rehber-ara-kyil { color: --muted--; font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+  .modulex-referans-rehber-ara-kok { color: --accentInk--; font-size: 18px; }
+  .modulex-referans-rehber-ara-yok { padding-block: 32px; color: --muted--; font-weight: 650; text-align: center; }
+  @media (max-width: 1024px) { .modulex-referans-rehber-ara-kayitlar { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 768px) {
+    .modulex-referans-rehber-ara-grup { grid-template-columns: minmax(0, 1fr); gap: 6px; padding-block: 16px; }
+    .modulex-referans-rehber-ara-gharf { position: static; font-size: 2rem; }
+    .modulex-referans-rehber-ara-kayitlar { grid-template-columns: minmax(0, 1fr); }
+    .modulex-referans-rehber-ara-dizin { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .modulex-referans-rehber-ara-hrf { flex: none; }
+  }
+  .modulex-referans-rehber-ara-logo { display: block; width: auto; max-width: 100%; height: clamp(32px, 4vw, 48px); object-fit: contain; filter: grayscale(1); transition: filter 0.3s ease, transform 0.3s ease; }
+  .modulex-referans-rehber-ara-kelime { display: inline-block; color: --text--; font-family: var(--mx-font-heading, inherit); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; transition: color 0.3s ease; }
+  .modulex-referans-rehber-ara-bag { color: inherit; text-decoration: none; }
+  .modulex-referans-rehber-ara-sektor { color: --accentInk--; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .modulex-referans-rehber-ara-kmetin { color: --muted--; font-size: 0.95rem; line-height: 1.65; }
+  .modulex-referans-rehber-ara-yil { color: --muted--; font-size: 0.85rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .modulex-referans-rehber-ara-harf img { width: 100%; height: 100%; object-fit: contain; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-referans-rehber-ara :is(.modulex-referans-rehber-ara-baslik, .modulex-referans-rehber-ara-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-referans-rehber-ara-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-referans-rehber-ara { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-referans-rehber-ara *, .modulex-referans-rehber-ara *::before, .modulex-referans-rehber-ara *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-referans-rehber-ara";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const rehberAra = (s, P) => {
+        const g = s.querySelector("[data-rh-ara]");
+        if (!g) return;
+        s.classList.add(P + "--rjs");
+        const kay = [...s.querySelectorAll("[data-rh]")];
+        const gruplar = [...s.querySelectorAll("[data-rh-grup]")];
+        const harf = [...s.querySelectorAll("[data-rh-harf]")];
+        const say = s.querySelector("[data-rh-kalip]");
+        const yok = s.querySelector("[data-rh-yok]");
+        const dl = document.documentElement.lang || undefined;
+        let nf = null;
+        try { nf = new Intl.NumberFormat(dl); } catch (x) { nf = null; }
+        const suz = () => {
+          let q = "";
+          try { q = g.value.trim().toLocaleLowerCase(dl); } catch (x) { q = g.value.trim().toLowerCase(); }
+          let n = 0;
+          kay.forEach((li) => { const v = !q || li.dataset.rh.includes(q); li.hidden = !v; if (v) n++; });
+          gruplar.forEach((gr) => {
+            const bos = !gr.querySelector("[data-rh]:not([hidden])");
+            gr.hidden = bos;
+            const h = harf.find((a) => a.dataset.rhHarf === gr.dataset.rhGrup);
+            if (!h) return;
+            h.classList.toggle(P + "-hrf--sonuk", bos);
+            if (bos) { h.setAttribute("aria-disabled", "true"); h.tabIndex = -1; } else { h.removeAttribute("aria-disabled"); h.removeAttribute("tabindex"); }
+          });
+          if (yok) yok.hidden = n > 0;
+          if (say) say.textContent = say.dataset.rhKalip.split("{n}").join(nf ? nf.format(n) : String(n));
+        };
+        g.addEventListener("input", suz);
+        harf.forEach((a) => a.addEventListener("click", (e) => { if (a.getAttribute("aria-disabled") === "true") e.preventDefault(); }));
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      rehberAra(s, P, az);
+    });
+  })();
+</script>

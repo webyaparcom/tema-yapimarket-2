@@ -1,0 +1,147 @@
+<section class="modulex-reyon-haritasi-arama{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-reyon-haritasi-arama-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* reyon-haritasi-arama — module ailesinde mağaza içi yön bulma yok; koleksiyon-satir-acilim ürün ızgarasıdır, fuar-salon-plani koordinatlı stand planı + rehber. Bu modül eşit reyon blokları üzerinde serbest metin aramasıyla reyon vurgular (eşleşen/soluk), raf dokusu ve kasa/giriş şeridiyle mağaza yerleşimini canlandırır. */
+  .modulex-reyon-haritasi-arama { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-reyon-haritasi-arama *, .modulex-reyon-haritasi-arama *::before, .modulex-reyon-haritasi-arama *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-reyon-haritasi-arama :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-reyon-haritasi-arama :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-reyon-haritasi-arama :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-reyon-haritasi-arama :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-reyon-haritasi-arama img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-reyon-haritasi-arama) img { height: auto; }
+  .modulex-reyon-haritasi-arama [hidden] { display: none !important; }
+  .modulex-reyon-haritasi-arama :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-reyon-haritasi-arama :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-reyon-haritasi-arama-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-reyon-haritasi-arama-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-reyon-haritasi-arama--bassiz .modulex-reyon-haritasi-arama-bas { display: none; }
+  .modulex-reyon-haritasi-arama-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-reyon-haritasi-arama-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-reyon-haritasi-arama-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-reyon-haritasi-arama-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-reyon-haritasi-arama-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-reyon-haritasi-arama-dugme:hover { transform: translateY(-2px); }
+  .modulex-reyon-haritasi-arama-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-reyon-haritasi-arama-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-reyon-haritasi-arama-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-reyon-haritasi-arama-giris { display: grid; gap: 14px; max-width: 720px; margin-block-end: 24px; }
+  .modulex-reyon-haritasi-arama-arac { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-block-end: 20px; }
+  .modulex-reyon-haritasi-arama-akutu { display: flex; flex: 1 1 320px; align-items: center; gap: 10px; max-width: 560px; padding-inline: 14px; border: 2px solid --text--; border-radius: 999px; background: --bg--; transition: box-shadow 0.2s ease; }
+  .modulex-reyon-haritasi-arama-akutu:focus-within { box-shadow: 0 0 0 4px color-mix(in srgb, --accent-- 30%, transparent); }
+  .modulex-reyon-haritasi-arama-aik { color: --accentInk--; }
+  .modulex-reyon-haritasi-arama-agirdi { width: 100%; min-height: 50px; border: 0; background: transparent; color: --text--; font: inherit; font-size: 1rem; }
+  .modulex-reyon-haritasi-arama-agirdi:focus { outline: none; }
+  .modulex-reyon-haritasi-arama-ryok { color: --muted--; font-weight: 700; }
+  .modulex-reyon-haritasi-arama-gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .modulex-reyon-haritasi-arama-yerlesim { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .modulex-reyon-haritasi-arama--js .modulex-reyon-haritasi-arama-yerlesim { grid-template-columns: minmax(0, 1.7fr) minmax(240px, 1fr); align-items: start; }
+  .modulex-reyon-haritasi-arama-magaza { display: grid; gap: 14px; padding: clamp(14px, 2vw, 22px); border: 3px solid --text--; border-radius: 6px; background: --kartBg--; }
+  .modulex-reyon-haritasi-arama-reyonlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 12px; }
+  .modulex-reyon-haritasi-arama-reyon { display: grid; transition: transform 0.3s ease; }
+  .modulex-reyon-haritasi-arama-rbtn { display: grid; grid-template-rows: auto auto 1fr; justify-items: center; align-items: start; gap: 8px; min-height: 210px; padding: 12px 6px; border: 2px solid --text--; border-radius: 4px; background-color: --bg--; background-image: repeating-linear-gradient(to bottom, transparent 0 40px, color-mix(in srgb, --text-- 22%, transparent) 40px 43px); color: --text--; font: inherit; transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; }
+  .modulex-reyon-haritasi-arama-rbtn:hover { box-shadow: 0 0 0 3px color-mix(in srgb, --accent-- 40%, transparent); }
+  .modulex-reyon-haritasi-arama-rbtn[aria-pressed="true"] { background-color: --vurguBg--; color: --vurguText--; }
+  .modulex-reyon-haritasi-arama-rno { display: grid; place-items: center; min-width: 40px; height: 40px; border-radius: 50%; background: --text--; color: --bg--; font-size: 1.1rem; font-weight: 850; }
+  .modulex-reyon-haritasi-arama-rbtn[aria-pressed="true"] .modulex-reyon-haritasi-arama-rno { background: --vurguText--; color: --vurguBg--; }
+  .modulex-reyon-haritasi-arama-rik { font-size: 28px; }
+  .modulex-reyon-haritasi-arama-rad { align-self: end; padding: 3px 6px; border-radius: 4px; background-color: --bg--; color: --text--; font-size: 0.76rem; font-weight: 800; line-height: 1.25; text-align: center; }
+  .modulex-reyon-haritasi-arama-reyon.modulex-reyon-haritasi-arama--bulundu { transform: translateY(-6px); }
+  .modulex-reyon-haritasi-arama-reyon.modulex-reyon-haritasi-arama--bulundu .modulex-reyon-haritasi-arama-rbtn { box-shadow: 0 0 0 4px --accent--; }
+  .modulex-reyon-haritasi-arama-reyon.modulex-reyon-haritasi-arama--sonuk .modulex-reyon-haritasi-arama-rbtn { border-style: dashed; background-image: none; }
+  .modulex-reyon-haritasi-arama-reyon.modulex-reyon-haritasi-arama--sonuk :is(.modulex-reyon-haritasi-arama-rik, .modulex-reyon-haritasi-arama-rad) { visibility: hidden; }
+  .modulex-reyon-haritasi-arama-kasa { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 14px; border-radius: 4px; background: repeating-linear-gradient(90deg, --text-- 0 18px, transparent 18px 26px) 0 100% / 100% 4px no-repeat, --bg--; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-reyon-haritasi-arama-kasa-ad, .modulex-reyon-haritasi-arama-kapi { display: inline-flex; align-items: center; gap: 6px; }
+  .modulex-reyon-haritasi-arama-kapi { color: --accentInk--; }
+  .modulex-reyon-haritasi-arama-bilgi { position: sticky; inset-block-start: 96px; padding: 22px; border-radius: --yuvarlak--; background: --vurguBg--; color: --vurguText--; animation: modulex-reyon-haritasi-arama-bilgi 0.35s ease both; }
+  .modulex-reyon-haritasi-arama-bilgi .modulex-reyon-haritasi-arama-kelime li { border-color: color-mix(in srgb, --vurguText-- 45%, transparent); }
+  .modulex-reyon-haritasi-arama-dizin { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 12px; }
+  .modulex-reyon-haritasi-arama--js .modulex-reyon-haritasi-arama-dizin { display: none; }
+  .modulex-reyon-haritasi-arama-rd { display: grid; gap: 10px; }
+  .modulex-reyon-haritasi-arama-dizin .modulex-reyon-haritasi-arama-rd { padding: 14px 16px; border-radius: 12px; background: --kartBg--; }
+  .modulex-reyon-haritasi-arama-rdbas { display: grid; gap: 2px; }
+  .modulex-reyon-haritasi-arama-rdbas strong { font-size: 1.15rem; font-weight: 800; }
+  .modulex-reyon-haritasi-arama-rdno { font-size: 0.76rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .modulex-reyon-haritasi-arama-kelime { display: flex; flex-wrap: wrap; gap: 6px; }
+  .modulex-reyon-haritasi-arama-kelime li { padding: 3px 10px; border: 1px solid --cizgi--; border-radius: 999px; font-size: 0.82rem; }
+  .modulex-reyon-haritasi-arama-rdbag { font-weight: 750; }
+  .modulex-reyon-haritasi-arama-yerlesim + .modulex-reyon-haritasi-arama-cta { margin-block-start: 28px; }
+  @keyframes modulex-reyon-haritasi-arama-bilgi { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 1024px) {
+    .modulex-reyon-haritasi-arama--js .modulex-reyon-haritasi-arama-yerlesim { grid-template-columns: minmax(0, 1fr); }
+    .modulex-reyon-haritasi-arama-bilgi { position: static; }
+  }
+  @media (max-width: 768px) {
+    .modulex-reyon-haritasi-arama-reyonlar { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .modulex-reyon-haritasi-arama-rbtn { min-height: 150px; padding: 8px 2px; }
+    .modulex-reyon-haritasi-arama-rno { min-width: 32px; height: 32px; font-size: 0.95rem; }
+    .modulex-reyon-haritasi-arama-rik { font-size: 22px; }
+    .modulex-reyon-haritasi-arama-rad { font-size: 0.64rem; padding: 2px 3px; word-break: break-word; }
+  }
+  .modulex-reyon-haritasi-arama-bag { color: inherit; text-decoration: none; }
+  .modulex-reyon-haritasi-arama-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-reyon-haritasi-arama-mbaslik { font-size: 1.05rem; font-weight: 700; }
+  .modulex-reyon-haritasi-arama-mmetin { color: --muted--; font-size: 0.95rem; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-reyon-haritasi-arama :is(.modulex-reyon-haritasi-arama-baslik, .modulex-reyon-haritasi-arama-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-reyon-haritasi-arama-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-reyon-haritasi-arama { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-reyon-haritasi-arama *, .modulex-reyon-haritasi-arama *::before, .modulex-reyon-haritasi-arama *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-reyon-haritasi-arama";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const reyonBul = (s, P) => {
+        const ry = [...s.querySelectorAll("[data-rey]")];
+        if (!ry.length) return;
+        s.classList.add(P + "--js");
+        const kap = s.querySelector("[data-rkap]");
+        if (kap) kap.hidden = false;
+        const g = s.querySelector("[data-rara]");
+        const bilgi = s.querySelector("[data-rbilgi]");
+        const kay = [...s.querySelectorAll("[data-rd]")];
+        const yok = s.querySelector("[data-ryok]");
+        const dl = document.documentElement.lang || undefined;
+        const norm = (t) => { let v = String(t || ""); try { v = v.toLocaleLowerCase(dl); } catch (e) { v = v.toLowerCase(); } return v.normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+        ry.forEach((x) => { x.dataset.n = norm(x.dataset.ara); });
+        const goster = (j) => {
+          ry.forEach((x) => { const b = x.querySelector("button"); if (b) b.setAttribute("aria-pressed", String(x.dataset.rey === j)); });
+          const k = kay.find((d) => d.dataset.rd === j);
+          if (bilgi) { bilgi.replaceChildren(...(k ? [k.cloneNode(true)] : [])); bilgi.hidden = !k; }
+        };
+        ry.forEach((x) => { const b = x.querySelector("button"); if (b) b.addEventListener("click", () => goster(x.dataset.rey)); });
+        if (g) g.addEventListener("input", () => {
+          const q = norm(g.value).trim();
+          let ilk = null;
+          ry.forEach((x) => {
+            const v = !!q && x.dataset.n.includes(q);
+            x.classList.toggle(P + "--bulundu", v);
+            x.classList.toggle(P + "--sonuk", !!q && !v);
+            if (v && ilk === null) ilk = x.dataset.rey;
+          });
+          if (yok) yok.hidden = !q || ilk !== null;
+          if (ilk !== null) goster(ilk);
+        });
+        goster(ry[0].dataset.rey);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      reyonBul(s, P, az);
+    });
+  })();
+</script>

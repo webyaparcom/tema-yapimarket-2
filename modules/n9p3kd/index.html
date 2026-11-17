@@ -1,0 +1,157 @@
+<header class="modulex-ust-merdiven{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-ust-merdiven-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</header>
+
+<style>
+  /* ust-merdiven — Öğeler aynı hizada değil, kademeli: menü bir merdiven/büyüme profili çizer (yapı, inşaat dili) — numaralı ya da zincirli menülerden farkı dikey kademe ve çizgi profili. */
+  .modulex-ust-merdiven { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-ust-merdiven *, .modulex-ust-merdiven *::before, .modulex-ust-merdiven *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-ust-merdiven :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-ust-merdiven :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-ust-merdiven :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-ust-merdiven :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-ust-merdiven img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-ust-merdiven) img { height: auto; }
+  .modulex-ust-merdiven [hidden] { display: none !important; }
+  .modulex-ust-merdiven :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-ust-merdiven :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-ust-merdiven-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-ust-merdiven-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-ust-merdiven--bassiz .modulex-ust-merdiven-bas { display: none; }
+  .modulex-ust-merdiven-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-ust-merdiven-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-ust-merdiven-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-ust-merdiven-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-ust-merdiven-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-ust-merdiven-dugme:hover { transform: translateY(-2px); }
+  .modulex-ust-merdiven-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-ust-merdiven-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-ust-merdiven-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-ust-merdiven { position: relative; z-index: 900; }
+  .modulex-ust-merdiven-logo { display: inline-flex; flex: 0 1 auto; min-width: 0; align-items: center; color: inherit; text-decoration: none; }
+  /* dar ekranda geniş logo/uzun ad çubuğu taşırmasın: logo daralır (img max-width 100%), ad sarar */
+  .modulex-ust-merdiven-logo img { width: auto; max-height: --logoH--; }
+  .modulex-ust-merdiven-ad { font-family: var(--mx-font-heading, inherit); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .modulex-ust-merdiven-oge { position: relative; display: inline-flex; align-items: center; min-height: 44px; color: inherit; font-weight: 600; text-decoration: none; transition: color 0.2s ease, background 0.2s ease; }
+  .modulex-ust-merdiven-oge:hover, .modulex-ust-merdiven-oge[aria-current="page"] { color: --accentInk--; }
+  .modulex-ust-merdiven-cta { display: inline-flex; flex: none; align-items: center; gap: 6px; min-height: 44px; padding: 8px 18px; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; white-space: nowrap; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .modulex-ust-merdiven-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -12px --accent--; }
+  .modulex-ust-merdiven-cta .material-symbols-outlined, .modulex-ust-merdiven-tel .material-symbols-outlined, .modulex-ust-merdiven-posta .material-symbols-outlined { font-size: 18px; }
+  .modulex-ust-merdiven-tel, .modulex-ust-merdiven-posta { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; white-space: nowrap; }
+  .modulex-ust-merdiven-tel:hover, .modulex-ust-merdiven-posta:hover { color: --accentInk--; }
+  .modulex-ust-merdiven-dil:empty { display: none; }
+  .modulex-ust-merdiven-ac { display: none; align-items: center; gap: 10px; min-width: 46px; min-height: 46px; padding: 0 12px; border: 1px solid --cizgi--; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-weight: 700; }
+  .modulex-ust-merdiven-ac-ikon { display: grid; gap: 4px; width: 20px; }
+  .modulex-ust-merdiven-ac-ikon span { display: block; height: 2px; border-radius: 2px; background: currentColor; transition: transform 0.3s ease, opacity 0.3s ease; }
+  .modulex-ust-merdiven--acik .modulex-ust-merdiven-ac-ikon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .modulex-ust-merdiven--acik .modulex-ust-merdiven-ac-ikon span:nth-child(2) { opacity: 0; }
+  .modulex-ust-merdiven--acik .modulex-ust-merdiven-ac-ikon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .modulex-ust-merdiven-kapat { display: inline-grid; place-items: center; width: 46px; height: 46px; border: 1px solid --cizgi--; border-radius: 50%; background: transparent; color: inherit; }
+  .modulex-ust-merdiven-perde { position: fixed; inset: 0; z-index: 1; background: color-mix(in srgb, --text-- 45%, transparent); animation: modulex-ust-merdiven-sol 0.3s ease both; }
+  @keyframes modulex-ust-merdiven-sol { from { opacity: 0; } to { opacity: 1; } }
+
+  .modulex-ust-merdiven-panel { display: grid; gap: 14px; }
+  @media (max-width: 1024px) {
+    .modulex-ust-merdiven--js .modulex-ust-merdiven-nav, .modulex-ust-merdiven--js .modulex-ust-merdiven-genis { display: none; }
+    .modulex-ust-merdiven--js .modulex-ust-merdiven-ac { display: inline-flex; }
+    .modulex-ust-merdiven-panel { position: absolute; inset-inline: 0; inset-block-start: 100%; padding: 16px 20px 24px; border-block-end: 1px solid --cizgi--; background: --bg--; box-shadow: 0 24px 40px -28px color-mix(in srgb, --text-- 55%, transparent); animation: modulex-ust-merdiven-in 0.3s ease both; }
+    .modulex-ust-merdiven-pliste { display: grid; }
+    .modulex-ust-merdiven-pliste .modulex-ust-merdiven-oge { width: 100%; min-height: 50px; border-block-end: 1px solid --cizgi--; font-size: 1.05rem; }
+    .modulex-ust-merdiven-palt { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  }
+  @media (min-width: 1025px) {
+    .modulex-ust-merdiven-panel { display: none !important; }
+  }
+  @keyframes modulex-ust-merdiven-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+  .modulex-ust-merdiven-iskele { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px 26px; padding-block: 14px 20px; }
+  .modulex-ust-merdiven-iskele > .modulex-ust-merdiven-logo, .modulex-ust-merdiven-iskele > .modulex-ust-merdiven-ac { align-self: center; }
+  .modulex-ust-merdiven-basamaklar { display: flex; flex-wrap: wrap; align-items: flex-start; }
+  .modulex-ust-merdiven-basamaklar > li { margin-block-start: calc(var(--i, 0) * 7px); }
+  .modulex-ust-merdiven-adim { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 14px 18px; border-block-start: 3px solid --text--; border-inline-start: 3px solid --text--; color: inherit; font-weight: 700; text-decoration: none; background-image: linear-gradient(--accent--, --accent--); background-repeat: no-repeat; background-size: 100% 0; transition: background-size 0.3s ease, color 0.3s ease, transform 0.25s ease; }
+  .modulex-ust-merdiven-basamaklar > li:first-child .modulex-ust-merdiven-adim { border-inline-start-color: transparent; }
+  .modulex-ust-merdiven-basamaklar > li:last-child .modulex-ust-merdiven-adim { border-inline-end: 3px solid --text--; }
+  .modulex-ust-merdiven-adim:hover { background-size: 100% 100%; color: --accentText--; transform: translateY(-3px); }
+  .modulex-ust-merdiven-adim[aria-current="page"] { background-color: --accent--; color: --accentText--; }
+  .modulex-ust-merdiven-genis { display: flex; align-self: center; align-items: center; gap: 12px; }
+  .modulex-ust-merdiven-pbasamak { display: grid; }
+  .modulex-ust-merdiven-pbasamak > li { padding-inline-start: calc(var(--i, 0) * 14px); }
+  .modulex-ust-merdiven-padim { display: flex; align-items: center; min-height: 50px; padding-inline: 14px; border-block-start: 2px solid --cizgi--; border-inline-start: 2px solid --cizgi--; color: inherit; font-size: 1.05rem; font-weight: 700; text-decoration: none; transition: border-color 0.2s ease, color 0.2s ease; }
+  .modulex-ust-merdiven-padim:hover, .modulex-ust-merdiven-padim[aria-current="page"] { border-color: --accent--; color: --accentInk--; }
+  @media (max-width: 1024px) {
+    .modulex-ust-merdiven-iskele { align-items: center; padding-block: 12px; }
+    .modulex-ust-merdiven:not(.modulex-ust-merdiven--js) .modulex-ust-merdiven-iskele { flex-wrap: wrap; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-ust-merdiven :is(.modulex-ust-merdiven-baslik, .modulex-ust-merdiven-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-ust-merdiven-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-ust-merdiven { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-ust-merdiven *, .modulex-ust-merdiven *::before, .modulex-ust-merdiven *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-ust-merdiven";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const cekmece = (s, P) => {
+          const ac = s.querySelector("." + P + "-ac");
+          const panel = ac ? document.getElementById(ac.getAttribute("aria-controls")) : null;
+          if (!ac || !panel) return;
+          s.classList.add(P + "--js");
+          const perde = s.querySelector("." + P + "-perde");
+          const modal = panel.getAttribute("aria-modal") === "true";
+          const kok = document.documentElement;
+          const kapa = (odak) => {
+            if (panel.hidden) return;
+            panel.hidden = true;
+            if (perde) perde.hidden = true;
+            ac.setAttribute("aria-expanded", "false");
+            s.classList.remove(P + "--acik");
+            if (modal) kok.style.overflow = "";
+            if (odak) ac.focus();
+          };
+          const aci = () => {
+            panel.hidden = false;
+            if (perde) perde.hidden = false;
+            ac.setAttribute("aria-expanded", "true");
+            s.classList.add(P + "--acik");
+            if (modal) kok.style.overflow = "hidden";
+            const ilk = panel.querySelector("a[href], button");
+            if (ilk) ilk.focus();
+          };
+          ac.addEventListener("click", () => (panel.hidden ? aci() : kapa(true)));
+          panel.addEventListener("click", (e) => {
+            if (e.target.closest("." + P + "-kapat")) kapa(true);
+            else if (e.target.closest("a[href]")) kapa(false);
+          });
+          if (perde) perde.addEventListener("click", () => kapa(true));
+          document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) kapa(true); });
+          if (modal) {
+            panel.addEventListener("keydown", (e) => {
+              if (e.key !== "Tab") return;
+              const o = [...panel.querySelectorAll("a[href], button:not([disabled])")].filter((x) => x.offsetParent !== null);
+              if (!o.length) return;
+              if (e.shiftKey && document.activeElement === o[0]) { e.preventDefault(); o[o.length - 1].focus(); }
+              else if (!e.shiftKey && document.activeElement === o[o.length - 1]) { e.preventDefault(); o[0].focus(); }
+            });
+          }
+          const g = Number(ac.dataset.genis);
+          if (g && window.matchMedia) window.matchMedia(`(min-width: ${g}px)`).addEventListener("change", (m) => { if (m.matches) kapa(false); });
+        };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      cekmece(s, P, az);
+    });
+  })();
+</script>

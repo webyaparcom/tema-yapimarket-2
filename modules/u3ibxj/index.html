@@ -1,0 +1,105 @@
+<footer class="modulex-alt-fis{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-alt-fis-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</footer>
+
+<style>
+  /* alt-fis — Footer bir alışveriş fişi: tırtıklı kenar CSS maskesiyle, kâğıt gölgesi drop-shadow ile çizilir; bilgi «kalem ....... değer» satırlarında okunur — biletin koçan/barkod dilinden farklı olarak dar, dikey, kasa fişi; market, yapı market, kuruyemiş, dönerci gibi tezgâh işletmeleri için. */
+  .modulex-alt-fis { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-alt-fis *, .modulex-alt-fis *::before, .modulex-alt-fis *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-alt-fis :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-alt-fis :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-alt-fis :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-alt-fis :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-alt-fis img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-alt-fis) img { height: auto; }
+  .modulex-alt-fis [hidden] { display: none !important; }
+  .modulex-alt-fis :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-alt-fis :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-alt-fis-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-alt-fis-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-alt-fis--bassiz .modulex-alt-fis-bas { display: none; }
+  .modulex-alt-fis-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-alt-fis-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-alt-fis-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-alt-fis-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-alt-fis-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-alt-fis-dugme:hover { transform: translateY(-2px); }
+  .modulex-alt-fis-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-alt-fis-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-alt-fis-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-alt-fis-bag { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+  .modulex-alt-fis-bag:hover { color: --accentInk--; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-alt-fis-bag[aria-current="page"] { color: --accentInk--; font-weight: 700; }
+  .modulex-alt-fis-logo { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; }
+  .modulex-alt-fis-logo img { width: auto; max-height: --logoH--; }
+  .modulex-alt-fis-ad { font-family: var(--mx-font-heading, inherit); font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .modulex-alt-fis-bbaslik { margin-block-end: 14px; color: --accentInk--; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  .modulex-alt-fis-sayfalar, .modulex-alt-fis-baglantilar, .modulex-alt-fis-iletisim, .modulex-alt-fis-yasal { display: grid; gap: 9px; }
+  .modulex-alt-fis-il { display: flex; align-items: flex-start; gap: 10px; }
+  .modulex-alt-fis-il-ic { display: grid; gap: 2px; }
+  .modulex-alt-fis-il-etiket { color: --muted--; font-size: 0.8rem; }
+  .modulex-alt-fis-il-ikon { flex: none; color: --accentInk--; font-size: 20px; }
+  .modulex-alt-fis-saatler { display: grid; gap: 6px; }
+  .modulex-alt-fis-saat { display: flex; justify-content: space-between; gap: 16px; }
+  .modulex-alt-fis-saat dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .modulex-alt-fis-sosyal { display: flex; flex-wrap: wrap; gap: 10px; }
+  .modulex-alt-fis-sosyal-a { display: inline-grid; place-items: center; width: 42px; height: 42px; border: 1px solid --cizgi--; border-radius: 50%; color: inherit; font-size: 18px; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease; }
+  .modulex-alt-fis-sosyal-a:hover { border-color: --accent--; background: --accent--; color: --accentText--; transform: translateY(-2px); }
+  .modulex-alt-fis-hakkinda { max-width: 46ch; color: --muted--; }
+  .modulex-alt-fis-telif { display: flex; flex-wrap: wrap; gap: 4px 14px; color: --muted--; font-size: 0.9rem; }
+  .modulex-alt-fis-dil:empty { display: none; }
+  .modulex-alt-fis-yukari { display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%; background: --accent--; color: --accentText--; text-decoration: none; transition: transform 0.25s ease; }
+  .modulex-alt-fis-yukari:hover { transform: translateY(-3px); }
+  .modulex-alt-fis-bulten { display: grid; gap: 8px; }
+  .modulex-alt-fis-nl-etiket { font-size: 0.9rem; font-weight: 700; }
+  .modulex-alt-fis-nl-satir { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-alt-fis-nl-girdi { flex: 1 1 200px; min-width: 0; min-height: 48px; padding: 10px 18px; border: 1px solid --cizgi--; border-radius: 999px; background: --bg--; color: --text--; font: inherit; }
+  .modulex-alt-fis-nl-dugme { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; padding: 10px 22px; border: 0; border-radius: 999px; background: --accent--; color: --accentText--; font: inherit; font-weight: 700; transition: transform 0.2s ease; }
+  .modulex-alt-fis-nl-dugme:hover { transform: translateY(-2px); }
+  .modulex-alt-fis-nl-dugme .material-symbols-outlined { font-size: 18px; }
+  .modulex-alt-fis-nl-durum:empty { display: none; }
+  .modulex-alt-fis-nl-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+  .modulex-alt-fis-nl-metin { color: --muted--; }
+
+  .modulex-alt-fis-fs-sahne { position: relative; display: grid; justify-items: center; filter: drop-shadow(0 20px 22px color-mix(in srgb, --text-- 22%, transparent)); }
+  .modulex-alt-fis-fs-yarik { position: relative; z-index: 1; width: min(100%, 680px); height: 16px; margin-block-end: -8px; border-radius: 999px; background: --text--; }
+  .modulex-alt-fis-fs-kagit { display: grid; gap: 18px; width: min(100%, 600px); padding: 44px clamp(18px, 5vw, 44px) 40px; background: --kartBg--; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94rem; -webkit-mask: conic-gradient(from 135deg at top, transparent, black 1deg 89deg, transparent 90deg) top / 18px 51% repeat-x, conic-gradient(from -45deg at bottom, transparent, black 1deg 89deg, transparent 90deg) bottom / 18px 51% repeat-x; mask: conic-gradient(from 135deg at top, transparent, black 1deg 89deg, transparent 90deg) top / 18px 51% repeat-x, conic-gradient(from -45deg at bottom, transparent, black 1deg 89deg, transparent 90deg) bottom / 18px 51% repeat-x; animation: modulex-alt-fis-fs-yaz 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; transition: transform 0.4s ease; }
+  .modulex-alt-fis-fs-sahne:hover .modulex-alt-fis-fs-kagit { transform: translateY(6px); }
+  @keyframes modulex-alt-fis-fs-yaz { from { opacity: 0; transform: translateY(-48px); } }
+  .modulex-alt-fis-fs-bas { display: grid; justify-items: center; gap: 10px; padding-block-end: 18px; border-block-end: 2px dashed --cizgi--; text-align: center; }
+  .modulex-alt-fis-fs-bas .modulex-alt-fis-ad { font-family: inherit; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-alt-fis-fs-not { max-width: 44ch; color: --muted--; font-size: 0.88rem; }
+  .modulex-alt-fis-fs-kalem { display: grid; gap: 8px; padding-block-end: 16px; border-block-end: 2px dashed --cizgi--; }
+  .modulex-alt-fis-fs-kalem-ad { color: --muted--; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+  .modulex-alt-fis-fs-liste { display: grid; gap: 6px; }
+  .modulex-alt-fis-fs-satir { display: flex; align-items: baseline; gap: 8px; transition: background-color 0.2s ease; }
+  .modulex-alt-fis-fs-satir:hover { background-color: color-mix(in srgb, --accent-- 7%, transparent); }
+  .modulex-alt-fis-fs-ad { flex: none; max-width: 60%; overflow-wrap: anywhere; }
+  .modulex-alt-fis-fs-nokta { flex: 1 1 24px; min-width: 16px; border-block-end: 2px dotted --cizgi--; transform: translateY(-4px); }
+  .modulex-alt-fis-fs-deger { min-width: 0; font-weight: 700; text-align: end; overflow-wrap: anywhere; }
+  .modulex-alt-fis-fs-deger .material-symbols-outlined { font-size: 18px; vertical-align: middle; }
+  .modulex-alt-fis-fs-telif { display: grid; justify-items: center; gap: 2px; color: --muted--; font-size: 0.82rem; letter-spacing: 0.08em; text-align: center; text-transform: uppercase; }
+  .modulex-alt-fis-fs-dip { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 24px; margin-block-start: 30px; text-align: center; }
+  .modulex-alt-fis-fs-yasal { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; font-size: 0.9rem; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-alt-fis :is(.modulex-alt-fis-fs-kalem-ad, .modulex-alt-fis-fs-telif, .modulex-alt-fis-fs-bas .modulex-alt-fis-ad) { letter-spacing: 0; }
+  @media (max-width: 768px) {
+    .modulex-alt-fis-fs-kagit { font-size: 0.88rem; }
+    .modulex-alt-fis-fs-ad { max-width: 55%; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-alt-fis :is(.modulex-alt-fis-baslik, .modulex-alt-fis-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-alt-fis-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-alt-fis { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-alt-fis *, .modulex-alt-fis *::before, .modulex-alt-fis *::after { animation: none !important; transition: none !important; }
+  }
+</style>

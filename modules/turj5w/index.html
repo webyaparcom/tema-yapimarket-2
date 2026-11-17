@@ -1,0 +1,113 @@
+<section class="modulex-iletisim-fis{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-iletisim-fis-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* iletisim-fis — iletisim-cetvel nokta çizgili fiyat listesi dilidir; bu modül fiziksel FİŞ nesnesi: yazıcı ağzı, gradient testere dişi kenar (::after), kesikli/noktalı ayraçlar, barkod ve gözlemle (IntersectionObserver) yazıcıdan çıkış hareketi. */
+  .modulex-iletisim-fis { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-iletisim-fis *, .modulex-iletisim-fis *::before, .modulex-iletisim-fis *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-iletisim-fis :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-iletisim-fis :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-iletisim-fis :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-iletisim-fis :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-iletisim-fis img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-iletisim-fis) img { height: auto; }
+  .modulex-iletisim-fis [hidden] { display: none !important; }
+  .modulex-iletisim-fis :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-iletisim-fis :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-iletisim-fis-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-iletisim-fis-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-iletisim-fis--bassiz .modulex-iletisim-fis-bas { display: none; }
+  .modulex-iletisim-fis-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-iletisim-fis-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-iletisim-fis-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-iletisim-fis-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-iletisim-fis-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-iletisim-fis-dugme:hover { transform: translateY(-2px); }
+  .modulex-iletisim-fis-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-iletisim-fis-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-iletisim-fis-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-iletisim-fis-yazici { position: relative; display: grid; justify-items: center; max-inline-size: 480px; margin-inline: auto; padding-block-end: 14px; }
+  .modulex-iletisim-fis-agiz { position: relative; z-index: 1; display: block; inline-size: 100%; block-size: 18px; border-radius: 999px; background: color-mix(in srgb, --text-- 82%, --bg--); box-shadow: inset 0 -4px 0 color-mix(in srgb, --text-- 50%, transparent); }
+  .modulex-iletisim-fis-fis { position: relative; inline-size: calc(100% - 28px); margin-block-start: -9px; padding-block: 34px 40px; padding-inline: clamp(18px, 4vw, 30px); background: --kartBg--; font-family: ui-monospace, Menlo, Consolas, monospace; box-shadow: 0 24px 40px -28px color-mix(in srgb, --text-- 50%, transparent); transform-origin: top; transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.6s ease; }
+  .modulex-iletisim-fis-fis::after { content: ""; position: absolute; inset-inline: 0; inset-block-start: 100%; block-size: 12px; background-image: linear-gradient(135deg, --kartBg-- 50%, transparent 50%), linear-gradient(225deg, --kartBg-- 50%, transparent 50%); background-size: 16px 12px; background-repeat: repeat-x; }
+  .modulex-iletisim-fis--hazir:not(.modulex-iletisim-fis--gor) .modulex-iletisim-fis-fis { opacity: 0; transform: translateY(-40px) scaleY(0.85); }
+  .modulex-iletisim-fis-fbas { display: grid; justify-items: center; gap: 8px; padding-block-end: 18px; border-block-end: 2px dashed color-mix(in srgb, --text-- 35%, transparent); text-align: center; }
+  .modulex-iletisim-fis-fmarka { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+  .modulex-iletisim-fis-fbas .modulex-iletisim-fis-baslik { font-family: inherit; font-size: clamp(1.35rem, 3vw, 1.8rem); letter-spacing: 0; }
+  .modulex-iletisim-fis-fbas .modulex-iletisim-fis-metin { font-size: 0.92rem; }
+  .modulex-iletisim-fis-kalemler { display: grid; padding-block: 14px; border-block-end: 2px dashed color-mix(in srgb, --text-- 35%, transparent); }
+  .modulex-iletisim-fis-kalem { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 16px; padding-block: 9px; }
+  .modulex-iletisim-fis-kalem + .modulex-iletisim-fis-kalem { border-block-start: 1px dotted --cizgi--; }
+  .modulex-iletisim-fis-ketk { color: --muted--; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-iletisim-fis-kdeger { min-width: 0; color: inherit; font-weight: 700; text-align: end; text-decoration: none; overflow-wrap: anywhere; transition: color 0.2s ease; }
+  a.modulex-iletisim-fis-kdeger:hover { color: --accentInk--; text-decoration: underline dotted; }
+  .modulex-iletisim-fis-cizgikod { display: block; block-size: 48px; margin-block-start: 18px; background-image: repeating-linear-gradient(90deg, --text-- 0 1px, transparent 1px 3px, --text-- 3px 6px, transparent 6px 7px, --text-- 7px 8px, transparent 8px 11px); }
+  @media (max-width: 768px) {
+    .modulex-iletisim-fis-fis { inline-size: calc(100% - 16px); }
+    .modulex-iletisim-fis-kalem { flex-direction: column; align-items: flex-start; }
+    .modulex-iletisim-fis-kdeger { text-align: start; }
+  }
+  .modulex-iletisim-fis-kikon { flex: none; display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: color-mix(in srgb, --accent-- 14%, transparent); color: --accentInk--; font-size: 24px; }
+  .modulex-iletisim-fis-ketiket { display: block; color: --muted--; font-size: 0.82rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-iletisim-fis-deger { color: inherit; font-weight: 650; text-decoration: none; overflow-wrap: anywhere; transition: color 0.2s ease; }
+  a.modulex-iletisim-fis-deger:hover { color: --accentInk--; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-iletisim-fis-eylem { display: inline-flex; align-items: center; gap: 6px; color: --accentInk--; font-weight: 700; text-decoration: none; transition: gap 0.2s ease; }
+  .modulex-iletisim-fis-eylem:hover { gap: 10px; }
+  .modulex-iletisim-fis-eylem .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-fis-kopya { display: none; align-items: center; gap: 6px; min-height: 36px; padding: 6px 12px; border: 1px solid --cizgi--; border-radius: 999px; background: transparent; color: --text--; font: inherit; font-size: 0.85rem; font-weight: 650; transition: border-color 0.2s ease, background 0.2s ease; }
+  .modulex-iletisim-fis--kjs .modulex-iletisim-fis-kopya { display: inline-flex; }
+  .modulex-iletisim-fis-kopya:hover { border-color: --accent--; }
+  .modulex-iletisim-fis-kopya .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-fis--kopyalandi { background: color-mix(in srgb, --accent-- 14%, transparent); }
+  .modulex-iletisim-fis-sosyal { display: grid; gap: 10px; }
+  .modulex-iletisim-fis-sbaslik { color: --muted--; font-size: 0.9rem; font-weight: 650; }
+  .modulex-iletisim-fis-sliste { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-iletisim-fis-cip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 8px 14px; border: 1px solid --cizgi--; border-radius: 999px; color: inherit; font-weight: 650; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .modulex-iletisim-fis-cip:hover { border-color: --accent--; transform: translateY(-2px); }
+  .modulex-iletisim-fis-cikon { font-size: 18px; }
+  .modulex-iletisim-fis-harita { position: relative; overflow: hidden; min-height: 280px; border-radius: --yuvarlak--; background: --kartBg--; }
+  .modulex-iletisim-fis-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .modulex-iletisim-fis-hdesen { position: absolute; inset: 0; display: grid; place-items: center; background-color: color-mix(in srgb, --accent-- 8%, --kartBg--); background-image: linear-gradient(color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), radial-gradient(circle at 30% 40%, color-mix(in srgb, --accent-- 18%, transparent) 0 18%, transparent 19%); background-size: 36px 36px, 36px 36px, 100% 100%; }
+  .modulex-iletisim-fis-pin { color: --accentInk--; font-size: 56px; animation: modulex-iletisim-fis-zipla 2.4s ease-in-out infinite; }
+  @keyframes modulex-iletisim-fis-zipla { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .modulex-iletisim-fis-hyol { position: absolute; inset-block-end: 16px; inset-inline-start: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 999px; background: --bg--; color: --text--; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px color-mix(in srgb, --text-- 16%, transparent); transition: transform 0.2s ease; }
+  .modulex-iletisim-fis-hyol:hover { transform: translateY(-2px); }
+  .modulex-iletisim-fis-hyol .material-symbols-outlined { font-size: 18px; color: --accentInk--; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-fis :is(.modulex-iletisim-fis-baslik, .modulex-iletisim-fis-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-fis-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-iletisim-fis { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-iletisim-fis *, .modulex-iletisim-fis *::before, .modulex-iletisim-fis *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-iletisim-fis";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const gozlem = (s, P, az) => {
+        const gor = () => s.classList.add(P + "--gor");
+        s.classList.add(P + "--hazir");
+        if (az || !("IntersectionObserver" in window)) { gor(); return; }
+        const io = new IntersectionObserver((gs) => {
+          gs.forEach((g) => { if (g.isIntersecting) { gor(); io.disconnect(); } });
+        }, { threshold: 0.15 });
+        io.observe(s);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      gozlem(s, P, az);
+    });
+  })();
+</script>

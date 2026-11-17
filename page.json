@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "id": "md66okcj2r",
+      "name": {
+        "tr": "Reyonlar",
+        "en": "Aisles",
+        "ar": "الممرات"
+      },
+      "description": {
+        "tr": "Kelimeyle reyon bulun; boya bütçesini hesaplayın.",
+        "en": "Find the aisle by keyword; estimate your paint budget.",
+        "ar": "اعثر على الممر بكلمة واحسب ميزانية الدهان."
+      },
+      "path": "hizmetler",
+      "icon": "map",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "ftecn0",
+          "cl22rz"
+        ],
+        "footer": []
+      },
+      "index": 0
+    },
+    {
+      "name": {
+        "tr": "Hakkımızda",
+        "en": "About",
+        "ar": "من نحن"
+      },
+      "status": "play",
+      "id": "hakkimizda",
+      "path": "hakkimizda",
+      "category": "",
+      "url": "",
+      "index": 1,
+      "icon": "info",
+      "desing": {
+        "header": [],
+        "body": [
+          "jelp18",
+          "turj5w"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Müşteri puanları ve mağaza bilgileri (kurgusal).",
+        "en": "Customer scores and store details (fictional).",
+        "ar": "تقييمات العملاء ومعلومات المتجر (افتراضي)."
+      }
+    },
+    {
+      "id": "eeeh65lz12",
+      "name": {
+        "tr": "Markalar",
+        "en": "Brands",
+        "ar": "العلامات"
+      },
+      "description": {
+        "tr": "Raflardaki kurgusal markaların A–Z rehberi.",
+        "en": "An A–Z guide to the fictional brands on our shelves.",
+        "ar": "دليل أبجدي للعلامات الافتراضية على رفوفنا."
+      },
+      "path": "referanslar",
+      "icon": "sell",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "zinkrp",
+          "cl22rz"
+        ],
+        "footer": []
+      },
+      "index": 2
+    },
+    {
+      "name": {
+        "tr": "İletişim",
+        "en": "Contact",
+        "ar": "اتصل بنا"
+      },
+      "status": "play",
+      "id": "iletisim",
+      "path": "iletisim",
+      "category": "",
+      "url": "",
+      "index": 3,
+      "icon": "call",
+      "desing": {
+        "header": [],
+        "body": [
+          "turj5w",
+          "k8mp01"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Adres, saatler, WhatsApp ve harita.",
+        "en": "Address, hours, WhatsApp and map.",
+        "ar": "العنوان والساعات وواتساب والخريطة."
+      }
+    }
+  ],
+  "desc": []
+}
