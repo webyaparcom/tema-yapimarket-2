@@ -1,0 +1,40 @@
+{
+  "id": "md66okcj2r",
+  "name": {
+    "tr": "Reyonlar",
+    "en": "Aisles",
+    "ar": "الممرات"
+  },
+  "description": {
+    "tr": "Kelimeyle reyon bulun; boya bütçesini hesaplayın.",
+    "en": "Find the aisle by keyword; estimate your paint budget.",
+    "ar": "اعثر على الممر بكلمة واحسب ميزانية الدهان."
+  },
+  "keyword": {
+    "tr": "reyon haritası",
+    "en": "store map",
+    "ar": "خريطة المتجر"
+  },
+  "path": "hizmetler",
+  "icon": "map",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "ftecn0",
+      "cl22rz"
+    ],
+    "footer": []
+  },
+  "index": 0,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Reyonlar",
+    "en": "Aisles",
+    "ar": "الممرات"
+  },
+  "date": "2026-11-16T22:43:58.937Z",
+  "update": "2026-11-16T22:47:32.110Z"
+}

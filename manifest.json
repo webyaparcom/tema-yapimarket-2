@@ -1,0 +1,29 @@
+{
+  "name": "Malta Yapı Market",
+  "short_name": "Malta Yapı M",
+  "description": "Malta Yapı Market: Ankara Yenimahalle’de boya, hırdavat, el aletleri, elektrik, tesisat ve bahçe ürünleri; kelimeyle reyon bulun, boya bütçesini hesaplayın. Demo site; içerik kurgusaldır.",
+  "start_url": "/tr/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1F5FAF",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/img/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
