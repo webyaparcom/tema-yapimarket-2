@@ -4,12 +4,16 @@
   "description": {
     "tr": "Malta Yapı Market: Ankara Yenimahalle’de boya, hırdavat, el aletleri, elektrik, tesisat ve bahçe ürünleri; kelimeyle reyon bulun, boya bütçesini hesaplayın. Demo site; içerik kurgusaldır.",
     "en": "Malta DIY Store: paint, hardware, hand tools, electrical, plumbing and garden goods in Yenimahalle, Ankara; find the aisle by keyword and estimate your paint budget. Demo site; content is fictional.",
-    "ar": "مالطا لمواد البناء: دهانات وعدد وأدوات يدوية وكهرباء وسباكة ومستلزمات حديقة في يني محلة بأنقرة؛ اعثر على الممر بكلمة واحسب ميزانية الدهان. موقع تجريبي؛ المحتوى افتراضي."
+    "ar": "مالطا لمواد البناء: دهانات وعدد وأدوات يدوية وكهرباء وسباكة ومستلزمات حديقة في يني محلة بأنقرة؛ اعثر على الممر بكلمة واحسب ميزانية الدهان. موقع تجريبي؛ المحتوى افتراضي.",
+    "de": "Malta Yapı Market: Farben, Eisenwaren, Handwerkzeuge, Elektro, Installation und Gartenprodukte in Ankara Yenimahalle; finden Sie die Abteilung per Stichwort, berechnen Sie das Farbbudget. Demo-Website; die Inhalte sind fiktiv.",
+    "ru": "Malta Yapı Market: краски, скобяные изделия, ручные инструменты, электрика, сантехника и товары для сада в Йенимахалле, Анкара; найдите отдел по слову, рассчитайте бюджет на краску. Демо-сайт; содержание вымышленное."
   },
   "keyword": {
     "tr": "yapı market, hırdavat, boya, tesisat, el aletleri, Ankara",
     "en": "DIY store, hardware, paint, plumbing, hand tools, Ankara",
-    "ar": "متجر مواد بناء، عدد، دهانات، سباكة، أدوات يدوية، أنقرة"
+    "ar": "متجر مواد بناء، عدد، دهانات، سباكة، أدوات يدوية، أنقرة",
+    "de": "Baumarkt, Baumaterial, Farbe, Sanitär, Handwerkzeuge, Ankara",
+    "ru": "строительный магазин, стройматериалы, краска, сантехника, ручной инструмент, Анкара"
   },
   "category": "Kurumsal",
   "name": "Malta Yapı Market",
@@ -18,15 +22,27 @@
     "tr": true,
     "en": true,
     "ar": true,
-    "de": false,
-    "ru": false,
+    "de": true,
+    "ru": true,
     "es": false,
     "fr": false,
     "it": false,
     "ja": false,
     "zh": false,
     "ko": false,
-    "pt": false
+    "pt": false,
+    "fa": false,
+    "he": false,
+    "ur": false,
+    "nl": false,
+    "pl": false,
+    "uk": false,
+    "az": false,
+    "ka": false,
+    "el": false,
+    "bg": false,
+    "ro": false,
+    "hi": false
   },
   "logo": "logo.png",
   "multi": false,

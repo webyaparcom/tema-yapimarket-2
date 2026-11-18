@@ -5,12 +5,16 @@
       "name": {
         "tr": "Reyonlar",
         "en": "Aisles",
-        "ar": "الممرات"
+        "ar": "الممرات",
+        "de": "Gänge",
+        "ru": "Отделы"
       },
       "description": {
         "tr": "Kelimeyle reyon bulun; boya bütçesini hesaplayın.",
         "en": "Find the aisle by keyword; estimate your paint budget.",
-        "ar": "اعثر على الممر بكلمة واحسب ميزانية الدهان."
+        "ar": "اعثر على الممر بكلمة واحسب ميزانية الدهان.",
+        "de": "Finden Sie die Abteilung über ein Stichwort; berechnen Sie das Farbbudget.",
+        "ru": "Найдите отдел по слову; рассчитайте бюджет на краску."
       },
       "path": "hizmetler",
       "icon": "map",
@@ -30,7 +34,9 @@
       "name": {
         "tr": "Hakkımızda",
         "en": "About",
-        "ar": "من نحن"
+        "ar": "من نحن",
+        "de": "Über uns",
+        "ru": "О нас"
       },
       "status": "play",
       "id": "hakkimizda",
@@ -51,7 +57,9 @@
       "description": {
         "tr": "Müşteri puanları ve mağaza bilgileri (kurgusal).",
         "en": "Customer scores and store details (fictional).",
-        "ar": "تقييمات العملاء ومعلومات المتجر (افتراضي)."
+        "ar": "تقييمات العملاء ومعلومات المتجر (افتراضي).",
+        "de": "Kundenbewertungen und Geschäftsinformationen (fiktiv).",
+        "ru": "Оценки клиентов и сведения о магазине (условные)."
       }
     },
     {
@@ -59,12 +67,16 @@
       "name": {
         "tr": "Markalar",
         "en": "Brands",
-        "ar": "العلامات"
+        "ar": "العلامات",
+        "de": "Marken",
+        "ru": "Бренды"
       },
       "description": {
         "tr": "Raflardaki kurgusal markaların A–Z rehberi.",
         "en": "An A–Z guide to the fictional brands on our shelves.",
-        "ar": "دليل أبجدي للعلامات الافتراضية على رفوفنا."
+        "ar": "دليل أبجدي للعلامات الافتراضية على رفوفنا.",
+        "de": "A–Z-Führer durch die fiktiven Marken in den Regalen.",
+        "ru": "Путеводитель от A до Я по вымышленным брендам на полках."
       },
       "path": "referanslar",
       "icon": "sell",
@@ -84,7 +96,9 @@
       "name": {
         "tr": "İletişim",
         "en": "Contact",
-        "ar": "اتصل بنا"
+        "ar": "اتصل بنا",
+        "de": "Kontakt",
+        "ru": "Контакты"
       },
       "status": "play",
       "id": "iletisim",
@@ -105,7 +119,9 @@
       "description": {
         "tr": "Adres, saatler, WhatsApp ve harita.",
         "en": "Address, hours, WhatsApp and map.",
-        "ar": "العنوان والساعات وواتساب والخريطة."
+        "ar": "العنوان والساعات وواتساب والخريطة.",
+        "de": "Adresse, Öffnungszeiten, WhatsApp und Karte.",
+        "ru": "Адрес, часы работы, WhatsApp и карта."
       }
     }
   ],

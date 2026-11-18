@@ -3,17 +3,23 @@
   "name": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "description": {
     "tr": "Misyonumuz",
     "en": "Our mission",
-    "ar": "مهمتنا"
+    "ar": "مهمتنا",
+    "de": "Unsere Mission",
+    "ru": "Наша миссия"
   },
   "keyword": {
     "tr": "Misyon",
     "en": "mission, our mission, corporate responsibility",
-    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية"
+    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "path": "misyon",
   "icon": "flag",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Misyonumuz</h2>\n<p>Mahallenin tamir ve tadilat malzemesini tek çatı altında, doğru reyonda ve ölçüye kesilmiş olarak sunmak.</p>",
     "en": "<h2>Our mission</h2>\n<p>To offer the neighbourhood’s repair and renovation supplies under one roof, in the right aisle and cut to size.</p>",
-    "ar": "<h2>مهمتنا</h2>\n<p>تقديم مستلزمات الإصلاح والتجديد للحي تحت سقف واحد، في الممر الصحيح ومقصوصة على المقاس.</p>"
+    "ar": "<h2>مهمتنا</h2>\n<p>تقديم مستلزمات الإصلاح والتجديد للحي تحت سقف واحد، في الممر الصحيح ومقصوصة على المقاس.</p>",
+    "de": "<h2>Unsere Mission</h2>\n<p>Die Reparatur- und Renovierungsmaterialien des Viertels unter einem Dach, im richtigen Regal und zugeschnitten anzubieten.</p>",
+    "ru": "<h2>Наша миссия</h2>\n<p>Предлагать материалы для ремонта и отделки района под одной крышей, в нужном отделе и в нарезке по размеру.</p>"
   },
   "title": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "date": "2026-11-16T22:43:58.590Z",
   "update": "2026-11-16T22:47:32.146Z",

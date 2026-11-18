@@ -3,17 +3,23 @@
   "name": {
     "tr": "Markalar",
     "en": "Brands",
-    "ar": "العلامات"
+    "ar": "العلامات",
+    "de": "Marken",
+    "ru": "Бренды"
   },
   "description": {
     "tr": "Raflardaki kurgusal markaların A–Z rehberi.",
     "en": "An A–Z guide to the fictional brands on our shelves.",
-    "ar": "دليل أبجدي للعلامات الافتراضية على رفوفنا."
+    "ar": "دليل أبجدي للعلامات الافتراضية على رفوفنا.",
+    "de": "A–Z-Führer durch die fiktiven Marken in den Regalen.",
+    "ru": "Путеводитель от A до Я по вымышленным брендам на полках."
   },
   "keyword": {
     "tr": "marka rehberi",
     "en": "brand directory",
-    "ar": "دليل العلامات"
+    "ar": "دليل العلامات",
+    "de": "Markenleitfaden",
+    "ru": "руководство по бренду"
   },
   "path": "referanslar",
   "icon": "sell",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Markalar",
     "en": "Brands",
-    "ar": "العلامات"
+    "ar": "العلامات",
+    "de": "Marken",
+    "ru": "Бренды"
   },
   "date": "2026-11-16T22:43:58.965Z",
   "update": "2026-11-16T22:47:32.127Z"
