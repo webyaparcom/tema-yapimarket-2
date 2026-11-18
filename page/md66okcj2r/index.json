@@ -3,17 +3,23 @@
   "name": {
     "tr": "Reyonlar",
     "en": "Aisles",
-    "ar": "الممرات"
+    "ar": "الممرات",
+    "de": "Gänge",
+    "ru": "Отделы"
   },
   "description": {
     "tr": "Kelimeyle reyon bulun; boya bütçesini hesaplayın.",
     "en": "Find the aisle by keyword; estimate your paint budget.",
-    "ar": "اعثر على الممر بكلمة واحسب ميزانية الدهان."
+    "ar": "اعثر على الممر بكلمة واحسب ميزانية الدهان.",
+    "de": "Finden Sie die Abteilung über ein Stichwort; berechnen Sie das Farbbudget.",
+    "ru": "Найдите отдел по слову; рассчитайте бюджет на краску."
   },
   "keyword": {
     "tr": "reyon haritası",
     "en": "store map",
-    "ar": "خريطة المتجر"
+    "ar": "خريطة المتجر",
+    "de": "Filialkarte",
+    "ru": "Карта магазинов"
   },
   "path": "hizmetler",
   "icon": "map",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Reyonlar",
     "en": "Aisles",
-    "ar": "الممرات"
+    "ar": "الممرات",
+    "de": "Gänge",
+    "ru": "Отделы"
   },
   "date": "2026-11-16T22:43:58.937Z",
   "update": "2026-11-16T22:47:32.110Z"

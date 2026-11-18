@@ -2,7 +2,9 @@
   "name": {
     "tr": "Hakkımızda",
     "en": "About",
-    "ar": "من نحن"
+    "ar": "من نحن",
+    "de": "Über uns",
+    "ru": "О нас"
   },
   "status": "play",
   "category": "",
@@ -23,7 +25,9 @@
   "description": {
     "tr": "Müşteri puanları ve mağaza bilgileri (kurgusal).",
     "en": "Customer scores and store details (fictional).",
-    "ar": "تقييمات العملاء ومعلومات المتجر (افتراضي)."
+    "ar": "تقييمات العملاء ومعلومات المتجر (افتراضي).",
+    "de": "Kundenbewertungen und Geschäftsinformationen (fiktiv).",
+    "ru": "Оценки клиентов и сведения о магазине (условные)."
   },
   "spot": {
     "tr": "",
@@ -34,12 +38,16 @@
   "title": {
     "tr": "Hakkımızda",
     "en": "About",
-    "ar": "من نحن"
+    "ar": "من نحن",
+    "de": "Über uns",
+    "ru": "О нас"
   },
   "keyword": {
     "tr": "hakkımızda",
     "en": "about",
-    "ar": "من نحن"
+    "ar": "من نحن",
+    "de": "Über uns",
+    "ru": "О нас"
   },
   "text": {},
   "update": "2026-11-16T22:47:32.119Z",
